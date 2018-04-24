@@ -112,7 +112,18 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
   print("GMM estimation")
   
   # Spatial 2SLS
+  Z_s      <- vector("list",length=eq)
+  p_HZ_s    <- vector("list",length=eq)
+  y_s      <- vector("list",length=eq)
+  DeltaF  <- vector("list",length=eq)  
+  for (i in 1:eq) {
+    Z_s[[i]]    <- Z[[i]] - rho[[i]] * (w %*% Z[[i]])
+    p_HZ_s[[i]] <- p_h %*% Z_s[[i]]
+    y_s[[i]]    <- ylist[[i]] -rho[[i]] * ( w %*% ylist[[i]])
+    DeltaF[[i]] <- (solve(t(p_HZ_s[[i]]) %*% Z_s[[i]]) %*% t(p_HZ_s[[i]]) ) %*% y_s[[i]]
+  }
   
+  print("Spatial 2SLS estimation")
   
   # Spatial 3SLS 
 }
