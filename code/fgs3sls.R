@@ -60,7 +60,7 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
     Z[[i]] <- cbind(temp, xlist[[i]])
     PHZ[[i]] <- cbind(temp_php, xlist[[i]])
   }
-  print("Initialisation")
+  print("Initialisation: done")
   
   # First step 2sls estimation
   
@@ -72,7 +72,7 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
     PHu[[i]] <- ylist[[i]] - Z[[i]]%*%delta[[i]]
   }
   
-  print("First step 2SLS estimation")
+  print("First step 2SLS estimation: done")
   
   # GM estimator
   
@@ -109,21 +109,21 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
     print(paste("sigma is ", sigma)[i])
   }
   
-  print("GMM estimation")
+  print("GMM estimation: done")
   
   # Spatial 2SLS
   Z_s      <- vector("list",length=eq)
   p_HZ_s    <- vector("list",length=eq)
   y_s      <- vector("list",length=eq)
-  DeltaF  <- vector("list",length=eq)  
+  delta_s  <- vector("list",length=eq)  
   for (i in 1:eq) {
     Z_s[[i]]    <- Z[[i]] - rho[[i]] * (w %*% Z[[i]])
     p_HZ_s[[i]] <- p_h %*% Z_s[[i]]
     y_s[[i]]    <- ylist[[i]] -rho[[i]] * ( w %*% ylist[[i]])
-    DeltaF[[i]] <- (solve(t(p_HZ_s[[i]]) %*% Z_s[[i]]) %*% t(p_HZ_s[[i]]) ) %*% y_s[[i]]
+    delta_s[[i]] <- (solve(t(p_HZ_s[[i]]) %*% Z_s[[i]]) %*% t(p_HZ_s[[i]]) ) %*% y_s[[i]]
   }
   
-  print("Spatial 2SLS estimation")
+  print("Spatial 2SLS estimation: done")
   
   # Spatial 3SLS 
 }
