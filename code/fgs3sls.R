@@ -176,11 +176,21 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
     }
   }
   
-  coeff <- solve(p_HZ_cov %*% Z_s_tot) %*% p_HZ_cov %*% y_s_tot
-  residuals <- y_s_tot - Z_s_tot %*% coeff # Please check this one again!
-  cov_matrix <- solve(p_HZ_cov%*%p_HZ_s_tot)
+  co <- solve(p_HZ_cov %*% Z_s_tot) %*% p_HZ_cov %*% y_s_tot
+  res <- y_s_tot - Z_s_tot %*% co # Please check this one again!
+  cov <- solve(p_HZ_cov%*%p_HZ_s_tot)
+  
+  coeff <- vector("list",length=eq)
+  residuals <- vector("list",length=eq)
+  cov_matrix <- vector("list",length=eq)
+  
+  for (i in 1:eq) {
+    coeff[[i]] <- co[begin[i]:end[i]]  
+    cov_matrix[[i]] <- cov[begin[i]:end[i], begin[i]:end[i]]
+    residuals[[i]] <- res[((i-1)*n+1):(i*n)]
+  }
   
   print("Spatial 3SLS estimation: done")
   
-  
+  return(list(coeff = coeff, cov_matrix = cov_matrix, residuals = residuals))
 }
