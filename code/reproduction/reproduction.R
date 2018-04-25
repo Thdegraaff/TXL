@@ -3,7 +3,7 @@
 ##########################################################
 
 library("tidyverse")
-library("spse") # Needs to be installed separately
+#library("spse") # Needs to be installed separately
 library("readxl")
 
 ##########################################################
@@ -16,7 +16,7 @@ nr <- 431   # Number of regions
 # Read in data 
 ##########################################################
 
-data <- read_excel("./data/derived/data19982010V2.xls")
+data <- read_excel("./data/derived/data19982010V2.xlsx", 1)
 logsum95 <- read_csv("./data/derived/matrix1995logsum.csv")
 logsum04 <- read_csv("./data/derived/matrix2004Logsum.csv")
 logsum10 <- read_csv("./data/derived/matrix2010logsum.csv")

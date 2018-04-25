@@ -53,6 +53,7 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
         temp <- cbind(temp,w %*% ylist[[j]])
         temp_php <- cbind(temp_php,p_h%*%(w %*% ylist[[j]]))
         temp_names <-c(temp_names, paste0("d_", y_names[j]))
+        K[i] <- K[i] + 1
       }
     }
     colnames(temp) <- temp_names
@@ -76,7 +77,8 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
   
   # GM estimator
   
-  trace_ww <- sum(diag(crossprod(w)))
+  # trace_ww <- sum(diag(crossprod(w)))   # the slow way
+  trace_ww <- sum(w*w)  # this is the fast way (checked that they are similar)
   for (i in 1:eq) {
     w_PHu <- w %*% PHu[[i]]
     ww_PHu <- w %*% (w %*% PHu[[i]])
@@ -126,4 +128,59 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
   print("Spatial 2SLS estimation: done")
   
   # Spatial 3SLS 
+  
+  begin <-vector("numeric",length=eq) 
+  end   <-vector("numeric",length=eq) 
+  
+  total_var <- sum(K)
+  res <-matrix(0, n, eq)
+  Z_s_tot <- matrix(0, n*eq, total_var) 
+  p_HZ_s_tot <- matrix(0, n*eq, total_var) 
+  Z_tot <- matrix(0, n*eq, total_var) 
+  y_s_tot <- NULL
+  y_tot <- NULL
+  Sigma <- matrix(0, eq, eq)
+  p_HZ_cov <- matrix(0, total_var, eq*n)
+  
+  begin_temp  = 1
+  end_temp = 0
+  for (i in 1:eq) {
+    begin[i] <- begin_temp
+    end[i]   <- end_temp + K[i]
+    begin_temp <- begin_temp + K[i]
+    end_temp <- end[i]
+  }
+  
+  for (i in 1:eq) {
+    res[,i] <- y_s[[i]] - Z_s[[i]] %*% delta_s[[i]]
+    y_s_tot <- rbind(y_s_tot, y_s[[i]])
+    y_tot <- rbind(y_tot, ylist[[i]])
+    Z_s_tot[ ((i-1)*n+1):(i*n) , begin[i]:end[i] ] <- Z_s[[i]]
+    Z_tot[ ((i-1)*n+1):(i*n) , begin[i]:end[i] ] <- Z[[i]]
+    p_HZ_s_tot[ ((i-1)*n+1):(i*n) , begin[i]:end[i] ] <- p_HZ_s[[i]]
+  }
+  
+  for (i in 1:eq) {
+    for (j in 1:eq) {
+      Sigma[i,j] <- (1/n)*(crossprod(res[,j],res[,i]))
+    }
+  }
+  
+  inv_Sigma <- solve(Sigma)
+  
+  for (i in 1:eq) {
+    for (j in 1:eq) {
+      p_HZ_cov[ , ((i-1)*n+1):(i*n)] = 
+        p_HZ_cov[ , ((i-1)*n+1):(i*n)] +
+        t(p_HZ_s_tot[ ((i-1)*n+1):(i*n) , ]) * inv_Sigma[j,i]
+    }
+  }
+  
+  coeff <- solve(p_HZ_cov %*% Z_s_tot) %*% p_HZ_cov %*% y_s_tot
+  residuals <- y_s_tot - Z_s_tot %*% coeff # Please check this one again!
+  cov_matrix <- solve(p_HZ_cov%*%p_HZ_s_tot)
+  
+  print("Spatial 3SLS estimation: done")
+  
+  
 }
