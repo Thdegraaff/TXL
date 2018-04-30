@@ -114,9 +114,10 @@ eq7 <- y_e7 ~ 0+x_e7+oppervlakte + bedrterrein + water + landbouw
 ##########################################################
 
 source("code/fgs3sls.R")
+source("code/print_fgs3sls.R")
 
 formula <- list(tp1 = eq1, tp2 = eq2, tp3 = eq3, tp4 = eq4, tp5 = eq5, tp6 = eq6, tp7 = eq7)
-output <- fgs3sls(formula, data=data, w=wmat,
+sp_model <- fgs3sls(formula, data=data, w=wmat,
              lags=list(
                 c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
                 c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
@@ -128,4 +129,5 @@ output <- fgs3sls(formula, data=data, w=wmat,
                       ), 
              errors=list(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
              )
+print_fgs3sls(sp_model)
 

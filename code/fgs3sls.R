@@ -1,5 +1,8 @@
 fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
   
+  type<-'fgs3sls'
+  cl <- match.call()
+  
   n <- dim(data)[[1]]
   eq <- length(formula)
   
@@ -58,6 +61,7 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
     }
     colnames(temp) <- temp_names
     colnames(temp_php) <- temp_names
+    x_names[[i]] <- c(temp_names, x_names[[i]])
     Z[[i]] <- cbind(temp, xlist[[i]])
     PHZ[[i]] <- cbind(temp_php, xlist[[i]])
   }
@@ -192,5 +196,15 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
   
   print("Spatial 3SLS estimation: done")
   
-  return(list(coeff = coeff, cov_matrix = cov_matrix, residuals = residuals))
+  fgs3sls <- return(list(coeff = coeff, 
+                         cov_matrix = cov_matrix, 
+                         residuals = residuals,
+                         x_names = x_names,
+                         y_names = y_names,
+                         call = cl,
+                         eq = eq,
+                         rho = rho, 
+                         sigma = sigma))
+  class(fgs3sls) <- "fgs3sls"
+  return(fgs3sls)
 }
