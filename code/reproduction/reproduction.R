@@ -94,20 +94,55 @@ endo <- endo %>%
     x_e7  = banen_blm7
   )
 
-# Finally bind datasets
+# bind datasets
 data <- bind_cols(endo_lhs, endo, data)
+
+# Finally, create weighted lags
+data <- data %>%
+  mutate(
+    `IWN_bev_t-1` = Noord*log(wmat%*%exp(x_bev)),
+    `IWN_blm2_t-1` = Noord*log(wmat%*%exp(x_e2)),
+    `IWN_blm3_t-1` = Noord*log(wmat%*%exp(x_e3)),
+    `IWN_blm4_t-1` = Noord*log(wmat%*%exp(x_e4)),
+    `IWN_blm5_t-1` = Noord*log(wmat%*%exp(x_e5)),
+    `IWN_blm6_t-1` = Noord*log(wmat%*%exp(x_e6)),
+    `IWN_blm7_t-1` = Noord*log(wmat%*%exp(x_e7)),
+    
+    `IWZ_bev_t-1` = Zuid*log(wmat%*%exp(x_bev)),
+    `IWZ_blm2_t-1` = Zuid*log(wmat%*%exp(x_e2)),
+    `IWZ_blm3_t-1` = Zuid*log(wmat%*%exp(x_e3)),
+    `IWZ_blm4_t-1` = Zuid*log(wmat%*%exp(x_e4)),
+    `IWZ_blm5_t-1` = Zuid*log(wmat%*%exp(x_e5)),
+    `IWZ_blm6_t-1` = Zuid*log(wmat%*%exp(x_e6)),
+    `IWZ_blm7_t-1` = Zuid*log(wmat%*%exp(x_e7)),
+    
+    `IWO_bev_t-1` = Overig*log(wmat%*%exp(x_bev)),
+    `IWO_blm2_t-1` = Overig*log(wmat%*%exp(x_e2)),
+    `IWO_blm3_t-1` = Overig*log(wmat%*%exp(x_e3)),
+    `IWO_blm4_t-1` = Overig*log(wmat%*%exp(x_e4)),
+    `IWO_blm5_t-1` = Overig*log(wmat%*%exp(x_e5)),
+    `IWO_blm6_t-1` = Overig*log(wmat%*%exp(x_e6)),
+    `IWO_blm7_t-1` = Overig*log(wmat%*%exp(x_e7))
+  )
 
 ##########################################################
 # Create model specifications
 ##########################################################
 
-eq1 <- y_bev ~ 0+x_bev+dwoningen + oppervlakte + jd24jaar + od65jaar +water + Schiphol + landbouw
-eq2 <- y_e2 ~ 0+x_e2+oppervlakte + bedrterrein + water + landbouw
-eq3 <- y_e3 ~ 0+x_e3+oppervlakte + bedrterrein + water + landbouw
-eq4 <- y_e4 ~ 0+x_e4+oppervlakte + bedrterrein + water + landbouw 
-eq5 <- y_e5 ~ 0+x_e5+oppervlakte + bedrterrein + water + landbouw 
-eq6 <- y_e6 ~ 0+x_e6+oppervlakte + bedrterrein + water + landbouw 
-eq7 <- y_e7 ~ 0+x_e7+oppervlakte + bedrterrein + water + landbouw 
+eq1 <- y_bev ~ 0+x_bev+dwoningen + oppervlakte + jd24jaar + od65jaar +
+              water + Schiphol + Delfzijl + Almere + Nverkeer + Zverkeer + Overkeer
+eq2 <- y_e2 ~ 0+`IWN_bev_t-1` + `IWZ_bev_t-1` + `IWO_bev_t-1` + x_e2 + 
+              landbouw + groen + Nverkeer + Zverkeer + Delfzijl + Haarlem + Almere + bedrterrein 
+eq3 <- y_e3 ~ 0 + `IWN_bev_t-1`+ `IWN_blm2_t-1` + `IWZ_blm2_t-1` + `IWN_blm5_t-1` + `IWN_blm6_t-1` + `IWZ_blm6_t-1` + x_e3 +
+              Zverkeer + Schiphol + Delfzijl + Groningen + Delft + Almere + Rotterdam + LQGroothandel
+eq4 <- y_e4 ~ 0 + `IWN_bev_t-1` + `IWZ_bev_t-1` + `IWO_bev_t-1` + `IWO_blm2_t-1` + x_e4 +
+              Nverkeer + Zverkeer + Overkeer + Schiphol + Delfzijl + Delft + Almere
+eq5 <- y_e5 ~ 0+`IWN_bev_t-1` + `IWZ_bev_t-1` + `IWO_bev_t-1` +`IWN_blm4_t-1` + `IWZ_blm4_t-1` + `IWO_blm4_t-1` + x_e5 + 
+              landbouw + groen + water + Schiphol + Delfzijl + Almere + Amsterdam + Rotterdam + LQHoreca
+eq6 <- y_e6 ~ 0 + `IWN_bev_t-1` + `IWZ_bev_t-1` + `IWO_blm4_t-1` + `IWN_blm5_t-1`+ `IWO_blm5_t-1` + x_e6 + 
+              water + Nbedrterrein + Delft + Amsterdam
+eq7 <- y_e7 ~ 0 + `IWN_bev_t-1` + `IWZ_bev_t-1` + `IWO_bev_t-1` + x_e7 + 
+              Schiphol + Delfzijl + Delft
 
 ##########################################################
 # Do estimation

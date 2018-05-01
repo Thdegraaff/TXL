@@ -31,14 +31,16 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
   colnames(xall) <- allnames
   
   allnames <- unique(allnames)
+  print(allnames)
   sel <- vector("numeric",length=length(allnames))
   for (j in 1:length(allnames)) sel[j] <- unique(which(colnames(xall)==allnames[j]))[1]
   xall <- xall[,sel]
+  cor(xall)
   wxall <- w %*% xall
   wwxall<- w %*% wxall
   
   # Create matrix of instruments
-  h <- cbind(xall, wxall, wwxall)
+  h <- cbind(xall, wxall)
   # Create projection matrix of matrix of instruments
   hhinv <- solve(crossprod(h))
   p_h <- h%*%(hhinv)
