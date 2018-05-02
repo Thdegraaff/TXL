@@ -5,6 +5,7 @@
 library("tidyverse")
 #library("spse") # Needs to be installed separately
 library("readxl")
+library("texreg")
 
 ##########################################################
 # Define constants
@@ -150,6 +151,7 @@ eq7 <- y_e7 ~ 0 + `IWN_bev_t-1` + `IWZ_bev_t-1` + `IWO_bev_t-1` + x_e7 +
 
 source("code/fgs3sls.R")
 source("code/print_fgs3sls.R")
+source("code/write_output.R")
 
 formula <- list(tp1 = eq1, tp2 = eq2, tp3 = eq3, tp4 = eq4, tp5 = eq5, tp6 = eq6, tp7 = eq7)
 sp_model <- fgs3sls(formula, data=data, w=wmat,
@@ -165,4 +167,6 @@ sp_model <- fgs3sls(formula, data=data, w=wmat,
              errors=list(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
              )
 print_fgs3sls(sp_model)
-
+mlist <- write_output(sp_model)
+texreg(mlist, file = "output/reproduction.tex", single.row = FALSE, longtable = TRUE, use.packages = FALSE)
+screenreg(mlist)
