@@ -148,14 +148,14 @@ data <- bind_cols(endo_lhs, endo)
 # Finally, create weighted lags
 data <- data %>%
   mutate(
-    `IW_con_t-1` = log(wmat%*%exp(x_con)),
-    `IW_det_t-1` = log(wmat%*%exp(x_det)),
-    `IW_fin_t-1` = log(wmat%*%exp(x_fin)),
-    `IW_agr_t-1` = log(wmat%*%exp(x_agr)),
-    `IW_log_t-1` = log(wmat%*%exp(x_log)),
-    `IW_ind_t-1` = log(wmat%*%exp(x_ind)),
-    `IW_ove_t-1` = log(wmat%*%exp(x_ove)),
-    `IW_zor_t-1` = log(wmat%*%exp(x_zor))
+    `IW_con_t-1` = log(exp(wmat%*%x_con)),
+    `IW_det_t-1` = log(exp(wmat%*%x_det)),
+    `IW_fin_t-1` = log(exp(wmat%*%x_fin)),
+    `IW_agr_t-1` = log(exp(wmat%*%x_agr)),
+    `IW_log_t-1` = log(exp(wmat%*%x_log)),
+    `IW_ind_t-1` = log(exp(wmat%*%x_ind)),
+    `IW_ove_t-1` = log(exp(wmat%*%x_ove)),
+    `IW_zor_t-1` = log(exp(wmat%*%x_zor))
   )
 
 ##########################################################
@@ -165,29 +165,28 @@ data <- data %>%
 eq1 <- y_con ~ 0 + x_con + `IW_fin_t-1` + `IW_ove_t-1`
 eq2 <- y_det ~ 0 + x_det + `IW_ind_t-1`
 eq3 <- y_fin ~ 0 + x_fin + `IW_ind_t-1`
-eq4 <- y_agr ~ 0 + x_agr + `IW_det_t-1`
-eq5 <- y_log ~ 0 + x_log + `IW_det_t-1`
-eq6 <- y_ind ~ 0 + x_ind + `IW_ove_t-1`
-eq7 <- y_ove ~ 0 + x_ove + `IW_zor_t-1`
-eq8 <- y_zor ~ 0 + x_zor + `IW_ove_t-1`
+#eq4 <- y_agr ~ 0 + x_agr + `IW_det_t-1`
+eq4 <- y_log ~ 0 + x_log + `IW_det_t-1`
+eq5 <- y_ind ~ 0 + x_ind + `IW_ove_t-1`
+eq6 <- y_ove ~ 0 + x_ove + `IW_zor_t-1`
+eq7 <- y_zor ~ 0 + x_zor + `IW_ove_t-1`
 
 ##########################################################
 # Do estimation
 ##########################################################
 
-formula <- list(tp1 = eq1, tp2 = eq2, tp3 = eq3, tp4 = eq4, tp5 = eq5, tp6 = eq6, tp7 = eq7, tp8 = eq8)
+formula <- list(tp1 = eq1, tp2 = eq2, tp3 = eq3, tp4 = eq4, tp5 = eq5, tp6 = eq6, tp7 = eq7)
 sp_model <- fgs3sls(formula, data=data, w=wmat,
                     lags=list(
-                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
+                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
+                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
+                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
+                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
+                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
+                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
+                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
                     ), 
-                    errors=list(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
+                    errors=list(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
 )
 print_fgs3sls(sp_model)
 mlist <- write_output(sp_model)

@@ -75,6 +75,7 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
   PHu   <- vector("list",length=eq)
   
   for (i in 1:eq) {
+    print(i)
     delta[[i]] <- (solve(t(PHZ[[i]]) %*% Z[[i]] ) %*% t(PHZ[[i]]) ) %*% ylist[[i]]
     PHu[[i]] <- ylist[[i]] - Z[[i]]%*%delta[[i]]
   }
