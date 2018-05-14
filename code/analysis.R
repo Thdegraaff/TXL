@@ -70,26 +70,26 @@ rm(logsum00, logsum04, logsum10, logsum14)
 # Create big matrix
 ##########################################################
 
-m_97  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_98  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_99  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_00  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_01  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_02  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_03  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_04  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_05  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_06  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_07  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_08  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_09  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_10  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_11  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_12  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_13  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_14  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_15  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
-m_16  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_97  <- cbind(m00, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_98  <- cbind(m0, m00, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_99  <- cbind(m0, m0, m00, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_00  <- cbind(m0, m0, m0, m00, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_01  <- cbind(m0, m0, m0, m0, m00, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_02  <- cbind(m0, m0, m0, m0, m0, m00, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_03  <- cbind(m0, m0, m0, m0, m0, m0, m00, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_04  <- cbind(m0, m0, m0, m0, m0, m0, m0, m04, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_05  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m04, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_06  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m04, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_07  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m04, m0, m0, m0, m0, m0, m0, m0, m0, m0)
+m_08  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m04, m0, m0, m0, m0, m0, m0, m0, m0)
+m_09  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m04, m0, m0, m0, m0, m0, m0, m0)
+m_10  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m04, m0, m0, m0, m0, m0, m0)
+m_11  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m10, m0, m0, m0, m0, m0)
+m_12  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m10, m0, m0, m0, m0)
+m_13  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m10, m0, m0, m0)
+m_14  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m14, m0, m0)
+m_15  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m14, m0)
+m_16  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m14)
 
 wmat <- rbind(m_97, m_98, m_99, m_00, m_01, m_02, m_03, m_04, m_05, m_06, m_07, m_08, m_09,
               m_10, m_11, m_12, m_13, m_14, m_15, m_16)
@@ -185,8 +185,7 @@ sp_model <- fgs3sls(formula, data=data, w=wmat,
                       c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
                       c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
                       c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-                      
+                      c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE)
                     ), 
                     errors=list(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
 )

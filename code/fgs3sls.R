@@ -109,7 +109,7 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
       par <- c(param[1], param[1]^2, sqrt(param[2]^2) )
       1*crossprod(g - G %*% par)
     }
-    res <- optim(c(0.1,0.2), mm, method = "BFGS")
+    res <- optim(c(0.5,0.5), mm, method = "BFGS")
     
     rho[i] <- res$par[1]
     sigma[i] <- res$par[2]
