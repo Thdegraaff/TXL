@@ -3,7 +3,6 @@
 ##########################################################
 
 library("tidyverse")
-#library("spse") # Needs to be installed separately
 library("readxl")
 library("texreg")
 
