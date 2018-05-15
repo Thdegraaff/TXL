@@ -41,6 +41,7 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
   
   # Create matrix of instruments
   h <- cbind(xall, wxall)
+      h <- xall
   # Create projection matrix of matrix of instruments
   hhinv <- solve(crossprod(h))
   p_h <- h%*%(hhinv)
@@ -110,7 +111,7 @@ fgs3sls <- function(formula, data=list(), w, lags = NULL, errors= NULL){
       par <- c(param[1], param[1]^2, sqrt(param[2]^2) )
       1*crossprod(g - G %*% par)
     }
-    res <- optim(c(0.5,0.5), mm, method = "BFGS")
+    res <- optim(c(0.1,0.1), mm, method = "BFGS")
     
     rho[i] <- res$par[1]
     sigma[i] <- res$par[2]

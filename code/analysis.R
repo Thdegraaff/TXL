@@ -93,6 +93,8 @@ m_16  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m
 
 wmat <- rbind(m_97, m_98, m_99, m_00, m_01, m_02, m_03, m_04, m_05, m_06, m_07, m_08, m_09,
               m_10, m_11, m_12, m_13, m_14, m_15, m_16)
+wmat <- exp(wmat)
+wmat <- diag(8060)
 
 rm(m_97, m_98, m_99, m_00, m_01, m_02, m_03, m_04, m_05, m_06, m_07, m_08, m_09,
       m_10, m_11, m_12, m_13, m_14, m_15, m_16)
@@ -146,30 +148,30 @@ endo <- endo %>%
 data <- bind_cols(endo_lhs, endo)
 
 # Finally, create weighted lags
-data <- data %>%
-  mutate(
-    `IW_con_t-1` = log(exp(wmat%*%x_con)),
-    `IW_det_t-1` = log(exp(wmat%*%x_det)),
-    `IW_fin_t-1` = log(exp(wmat%*%x_fin)),
-    `IW_agr_t-1` = log(exp(wmat%*%x_agr)),
-    `IW_log_t-1` = log(exp(wmat%*%x_log)),
-    `IW_ind_t-1` = log(exp(wmat%*%x_ind)),
-    `IW_ove_t-1` = log(exp(wmat%*%x_ove)),
-    `IW_zor_t-1` = log(exp(wmat%*%x_zor))
-  )
+# data <- data %>%
+#   mutate(
+#     `IW_con_t-1` = log(wmat%*%exp(x_con)),
+#     `IW_det_t-1` = log(wmat%*%exp(x_det)),
+#     `IW_fin_t-1` = log(wmat%*%exp(x_fin)),
+#     `IW_agr_t-1` = log(wmat%*%exp(x_agr)),
+#     `IW_log_t-1` = log(wmat%*%exp(x_log)),
+#     `IW_ind_t-1` = log(wmat%*%exp(x_ind)),
+#     `IW_ove_t-1` = log(wmat%*%exp(x_ove)),
+#     `IW_zor_t-1` = log(wmat%*%exp(x_zor))
+#   )
 
 ##########################################################
 # Create model specifications
 ##########################################################
 
-eq1 <- y_con ~ 0 + x_con + `IW_fin_t-1` + `IW_ove_t-1`
-eq2 <- y_det ~ 0 + x_det + `IW_ind_t-1`
-eq3 <- y_fin ~ 0 + x_fin + `IW_ind_t-1`
+eq1 <- y_con ~ 1 + x_con #+ `IW_fin_t-1` + `IW_ove_t-1`
+eq2 <- y_det ~ 1 + x_det #+ `IW_ind_t-1`
+eq3 <- y_fin ~ 1 + x_fin #+ `IW_ind_t-1`
 #eq4 <- y_agr ~ 0 + x_agr + `IW_det_t-1`
-eq4 <- y_log ~ 0 + x_log + `IW_det_t-1`
-eq5 <- y_ind ~ 0 + x_ind + `IW_ove_t-1`
-eq6 <- y_ove ~ 0 + x_ove + `IW_zor_t-1`
-eq7 <- y_zor ~ 0 + x_zor + `IW_ove_t-1`
+eq4 <- y_log ~ 1 + x_log #+ `IW_det_t-1`
+eq5 <- y_ind ~ 1 + x_ind #+ `IW_ove_t-1`
+eq6 <- y_ove ~ 1 + x_ove #+ `IW_zor_t-1`
+eq7 <- y_zor ~ 1 + x_zor #+ `IW_ove_t-1`
 
 ##########################################################
 # Do estimation

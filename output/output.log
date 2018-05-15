@@ -1,51 +1,54 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350) (preloaded format=pdflatex 2017.9.27)  2 MAY 2018 12:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.8)  15 MAY 2018 17:19
 entering extended mode
-**./output.tex
-(output.tex
-LaTeX2e <2017-04-15>
-Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
-(C:\Users\tgf200\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrartcl.cls
-Document Class: scrartcl 2017/09/07 v3.24 KOMA-Script document class (article)
-(C:\Users\tgf200\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrkbase.sty
-Package: scrkbase 2017/09/07 v3.24 KOMA-Script package (KOMA-Script-dependent b
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\input output.tex
+(./output.tex
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrartcl.cls
+Document Class: scrartcl 2017/04/13 v3.23 KOMA-Script document class (article)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2017/04/13 v3.23 KOMA-Script package (KOMA-Script-dependent b
 asics and keyval usage)
 
-(C:\Users\tgf200\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrbase.sty
-Package: scrbase 2017/09/07 v3.24 KOMA-Script package (KOMA-Script-independent 
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2017/04/13 v3.23 KOMA-Script package (KOMA-Script-independent 
 basics and keyval usage)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(C:\Users\tgf200\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrlfile.sty
-Package: scrlfile 2017/09/07 v3.24 KOMA-Script package (loading files)
-)))
-(C:\Users\tgf200\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\tocbasic.sty
-Package: tocbasic 2017/09/07 v3.24 KOMA-Script package (handling toc-files)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2017/04/13 v3.23 KOMA-Script package (loading files)
+
+Package scrlfile, 2017/04/13 v3.23 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+))) (/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2017/04/13 v3.23 KOMA-Script package (handling toc-files)
 \scr@dte@tocline@numberwidth=\skip41
 \scr@dte@tocline@numbox=\box26
 )
 Package tocbasic Info: omitting babel extension for `toc'
 (tocbasic)             because of feature `nobabel' available
-(tocbasic)             for `toc' on input line 133.
+(tocbasic)             for `toc' on input line 131.
 Package tocbasic Info: omitting babel extension for `lof'
 (tocbasic)             because of feature `nobabel' available
-(tocbasic)             for `lof' on input line 135.
+(tocbasic)             for `lof' on input line 133.
 Package tocbasic Info: omitting babel extension for `lot'
 (tocbasic)             because of feature `nobabel' available
-(tocbasic)             for `lot' on input line 136.
+(tocbasic)             for `lot' on input line 134.
 Class scrartcl Info: File `scrsize11pt.clo' used instead of
-(scrartcl)           file `scrsize11.clo' to setup font sizes on input line 208
-0.
+(scrartcl)           file `scrsize11.clo' to setup font sizes on input line 205
+9.
 
-(C:\Users\tgf200\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrsize11pt.c
-lo
-File: scrsize11pt.clo 2017/09/07 v3.24 KOMA-Script font size class option (11pt
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+File: scrsize11pt.clo 2017/04/13 v3.23 KOMA-Script font size class option (11pt
 )
 )
-(C:\Users\tgf200\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\typearea.sty
-Package: typearea 2017/09/07 v3.24 KOMA-Script package (type area)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/koma-script/typearea.sty
+Package: typearea 2017/04/13 v3.23 KOMA-Script package (type area)
 \ta@bcor=\skip42
 \ta@div=\count79
 \ta@hblk=\skip43
@@ -68,7 +71,7 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \topskip        = 11.0pt
 (typearea)              \footskip       = 47.6pt
 (typearea)              \baselineskip   = 13.6pt
-(typearea)              on input line 1686.
+(typearea)              on input line 1647.
 )
 \c@part=\count80
 \c@section=\count81
@@ -82,15 +85,16 @@ Package typearea Info: These are the values describing the layout:
 \scr@dte@subsubsection@maxnumwidth=\skip50
 \scr@dte@paragraph@maxnumwidth=\skip51
 \scr@dte@subparagraph@maxnumwidth=\skip52
-LaTeX Info: Redefining \textsubscript on input line 4161.
+LaTeX Info: Redefining \textsubscript on input line 4094.
 \abovecaptionskip=\skip53
 \belowcaptionskip=\skip54
 \c@pti@nb@sid@b@x=\box27
 \c@figure=\count86
 \c@table=\count87
-Class scrartcl Info: Redefining `\numberline' on input line 5319.
+Class scrartcl Info: Redefining `\numberline' on input line 5233.
 \bibindent=\dimen102
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\longtable.sty"
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTleft=\skip55
 \LTright=\skip56
@@ -109,7 +113,12 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LT@p@ftn=\toks15
 )
 Class scrartcl Info: longtable captions redefined on input line 3.
- (output.aux)
+
+(./output.aux
+
+LaTeX Warning: Label `table:coefficients' multiply defined.
+
+)
 \openout1 = `output.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -124,19 +133,18 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
-
-(reproduction.tex
-Overfull \hbox (37.1669pt too wide) in alignment at lines 3--7
+ (./reproduction.tex
+Overfull \hbox (39.46709pt too wide) in alignment at lines 3--7
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (37.1669pt too wide) in alignment at lines 7--11
+Overfull \hbox (39.46709pt too wide) in alignment at lines 7--11
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (37.1669pt too wide) in alignment at lines 11--13
+Overfull \hbox (39.46709pt too wide) in alignment at lines 11--13
  [] [] [] [] [] [] [] [] 
  []
 
@@ -147,58 +155,88 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 15.
 
-Overfull \hbox (37.1669pt too wide) in alignment at lines 13--18
+Overfull \hbox (39.46709pt too wide) in alignment at lines 13--18
  [] [] [] [] [] [] [] [] 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 19.
 
-Overfull \hbox (37.1669pt too wide) in alignment at lines 18--39
+Overfull \hbox (39.46709pt too wide) in alignment at lines 18--39
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (37.1669pt too wide) in alignment at lines 39--59
+Overfull \hbox (39.46709pt too wide) in alignment at lines 39--59
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (37.1669pt too wide) in alignment at lines 59--79
+Overfull \hbox (39.46709pt too wide) in alignment at lines 59--79
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (37.1669pt too wide) in alignment at lines 79--99
+Overfull \hbox (39.46709pt too wide) in alignment at lines 79--99
  [] [] [] [] [] [] [] [] 
  []
 
 [1
 
-{C:/Users/tgf200/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Overfull \hbox (37.1669pt too wide) in alignment at lines 99--105
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (39.46709pt too wide) in alignment at lines 99--105
  [] [] [] [] [] [] [] [] 
  []
 
-[2]) [3] (output.aux) ) 
+[2]) (./first_run.tex
+Overfull \hbox (2.01694pt too wide) in alignment at lines 3--7
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.01694pt too wide) in alignment at lines 7--11
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.01694pt too wide) in alignment at lines 11--13
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.01694pt too wide) in alignment at lines 13--18
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (2.01694pt too wide) in alignment at lines 18--35
+ [] [] [] [] [] [] [] [] 
+ []
+
+) [3] (./output.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2148 strings out of 493323
- 40272 string characters out of 3139114
- 214613 words of memory out of 3000000
- 5739 multiletter control sequences out of 15000+200000
- 6379 words of font info for 23 fonts, out of 3000000 for 9000
+ 2140 strings out of 492995
+ 40097 string characters out of 6132704
+ 213651 words of memory out of 5000000
+ 5742 multiletter control sequences out of 15000+600000
+ 6379 words of font info for 23 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,51p,8841b,296s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
-8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on output.pdf (3 pages, 72272 bytes).
+ 41i,6n,51p,8846b,296s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
+local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
+ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/loc
+al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on output.pdf (3 pages, 69628 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
+ 42 PDF objects out of 1000 (max. 8388607)
+ 29 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
