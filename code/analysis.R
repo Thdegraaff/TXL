@@ -58,10 +58,10 @@ create_matrix <- function(dat) {
   as.matrix(dat[,2:(nr+1)])
 }
 
-m00 <- create_matrix(logsum00)
-m04 <- create_matrix(logsum04)
-m10 <- create_matrix(logsum10)
-m14 <- create_matrix(logsum04)
+m00 <- exp(create_matrix(logsum00))
+m04 <- exp(create_matrix(logsum04))
+m10 <- exp(create_matrix(logsum10))
+m14 <- exp(create_matrix(logsum04))
 m0  <- matrix(0, nr, nr)
 
 rm(logsum00, logsum04, logsum10, logsum14)
@@ -93,8 +93,8 @@ m_16  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m
 
 wmat <- rbind(m_97, m_98, m_99, m_00, m_01, m_02, m_03, m_04, m_05, m_06, m_07, m_08, m_09,
               m_10, m_11, m_12, m_13, m_14, m_15, m_16)
-wmat <- exp(wmat)
-wmat <- diag(8060)
+
+#wmat <- diag(8060)
 
 rm(m_97, m_98, m_99, m_00, m_01, m_02, m_03, m_04, m_05, m_06, m_07, m_08, m_09,
       m_10, m_11, m_12, m_13, m_14, m_15, m_16)
@@ -147,18 +147,18 @@ endo <- endo %>%
 # bind datasets
 data <- bind_cols(endo_lhs, endo)
 
-# Finally, create weighted lags
-# data <- data %>%
-#   mutate(
-#     `IW_con_t-1` = log(wmat%*%exp(x_con)),
-#     `IW_det_t-1` = log(wmat%*%exp(x_det)),
-#     `IW_fin_t-1` = log(wmat%*%exp(x_fin)),
-#     `IW_agr_t-1` = log(wmat%*%exp(x_agr)),
-#     `IW_log_t-1` = log(wmat%*%exp(x_log)),
-#     `IW_ind_t-1` = log(wmat%*%exp(x_ind)),
-#     `IW_ove_t-1` = log(wmat%*%exp(x_ove)),
-#     `IW_zor_t-1` = log(wmat%*%exp(x_zor))
-#   )
+Finally, create weighted lags
+data <- data %>%
+  mutate(
+    `IW_con_t-1` = log(wmat%*%exp(x_con)),
+    `IW_det_t-1` = log(wmat%*%exp(x_det)),
+    `IW_fin_t-1` = log(wmat%*%exp(x_fin)),
+    `IW_agr_t-1` = log(wmat%*%exp(x_agr)),
+    `IW_log_t-1` = log(wmat%*%exp(x_log)),
+    `IW_ind_t-1` = log(wmat%*%exp(x_ind)),
+    `IW_ove_t-1` = log(wmat%*%exp(x_ove)),
+    `IW_zor_t-1` = log(wmat%*%exp(x_zor))
+  )
 
 ##########################################################
 # Create model specifications
