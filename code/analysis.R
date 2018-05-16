@@ -33,14 +33,16 @@ logsum10 <- read_tsv("./data/src/logsums_muni_2010.asc", col_names = FALSE)
 logsum14 <- read_tsv("./data/src/logsums_muni_2014.asc", col_names = FALSE)
 
 ##########################################################
-# Fill in missing network pairs with -999
+# Fill in missing network pairs with -999; This one still has an error
 ##########################################################
 
 fill_in_matrix <- function(dat, dat_g){
   dat_t <- dat[,1:2]
   dat_g <- dat_g[,1:2]
   dat_temp <- setdiff(dat_g, dat_t)
-  mutate(dat_temp, X3 = -999 )
+  print(dat_temp)
+  dat_temp <- mutate(dat_temp, X3 = ifelse(X1 >0, -999, 0))
+  print(dat_temp)
   dat <- bind_rows(dat, dat_temp)
   dat <- arrange(dat, X1, X2)
 }
@@ -93,8 +95,6 @@ m_16  <- cbind(m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m0, m
 
 wmat <- rbind(m_97, m_98, m_99, m_00, m_01, m_02, m_03, m_04, m_05, m_06, m_07, m_08, m_09,
               m_10, m_11, m_12, m_13, m_14, m_15, m_16)
-
-#wmat <- diag(8060)
 
 rm(m_97, m_98, m_99, m_00, m_01, m_02, m_03, m_04, m_05, m_06, m_07, m_08, m_09,
       m_10, m_11, m_12, m_13, m_14, m_15, m_16)
