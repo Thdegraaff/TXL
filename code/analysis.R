@@ -20,6 +20,7 @@ nr <- 403  # Number of regions
 ##########################################################
 
 lisa <- read_csv(file = "./data/derived/lisa.csv")
+landuse <- read_csv(file = "./data/derived/landuse.csv")
 lisa <- lisa %>% 
   select(gem2014nr:sector_tigris, banen) %>% # select what is needed per sector
   spread(sector_tigris, banen) %>% # from long to wide
@@ -31,6 +32,15 @@ logsum00 <- read_tsv("./data/src/logsums_muni_2000.asc", col_names = FALSE)
 logsum04 <- read_tsv("./data/src/logsums_muni_2004.asc", col_names = FALSE)
 logsum10 <- read_tsv("./data/src/logsums_muni_2010.asc", col_names = FALSE)
 logsum14 <- read_tsv("./data/src/logsums_muni_2014.asc", col_names = FALSE)
+
+##########################################################
+# Merg Lisa data with land use data
+##########################################################
+
+landuse <- landuse %>%
+  rename(gem2014nr = Gemeente)
+
+lisa <- left_join(lisa, landuse, by = c("gem2014nr" = "gem2014nr", "lisa_jaar" = "lisa_jaar"))
 
 ##########################################################
 # Fill in missing network pairs with -999; This one still has an error
@@ -132,7 +142,7 @@ endo_lhs <- endo_lhs %>%
   )
 
 endo <- endo %>%
-  dplyr::select(Consumentendiensten:Zorg) %>%
+  dplyr::select(Consumentendiensten:Water) %>%
   rename(
     x_con  = Consumentendiensten, 
     x_det  = Detailhandel,
@@ -141,7 +151,16 @@ endo <- endo %>%
     x_log  = Logistiek,
     x_ind  = 'Nijverheid en industrie',
     x_ove  = 'Overheid en onderwijs',
-    x_zor  =  Zorg
+    x_zor  =  Zorg, 
+    x_infra = Infrastructuur, 
+    x_wonen = Wonen, 
+    x_voorzieningen = Voorzieningen, 
+    x_groen = 'sted. Groen',
+    x_bedr = bedrijfsterrein, 
+    x_nat = natuur, 
+    x_glas = glastuinbouw, 
+    x_landbouw = landbouw, 
+    x_water = Water
   )
 
 # bind datasets
@@ -164,14 +183,14 @@ data <- data %>%
 # Create model specifications
 ##########################################################
 
-eq1 <- y_con ~ 1 + x_con #+ `IW_fin_t-1` + `IW_ove_t-1`
-eq2 <- y_det ~ 1 + x_det #+ `IW_ind_t-1`
-eq3 <- y_fin ~ 1 + x_fin #+ `IW_ind_t-1`
+eq1 <- y_con ~ 1 + x_con + x_nat + x_water + x_wonen + x_infra#+ `IW_fin_t-1` + `IW_ove_t-1`
+eq2 <- y_det ~ 1 + x_det + x_nat + x_water + x_wonen + x_infra#+ `IW_ind_t-1`
+eq3 <- y_fin ~ 1 + x_fin + x_nat + x_water + x_wonen + x_infra#+ `IW_ind_t-1`
 #eq4 <- y_agr ~ 0 + x_agr + `IW_det_t-1`
-eq4 <- y_log ~ 1 + x_log #+ `IW_det_t-1`
-eq5 <- y_ind ~ 1 + x_ind #+ `IW_ove_t-1`
-eq6 <- y_ove ~ 1 + x_ove #+ `IW_zor_t-1`
-eq7 <- y_zor ~ 1 + x_zor #+ `IW_ove_t-1`
+eq4 <- y_log ~ 1 + x_log + x_nat + x_water + x_wonen + x_infra#+ `IW_det_t-1`
+eq5 <- y_ind ~ 1 + x_ind + x_nat + x_water + x_wonen + x_infra#+ `IW_ove_t-1`
+eq6 <- y_ove ~ 1 + x_ove + x_nat + x_water + x_wonen + x_infra#+ `IW_zor_t-1`
+eq7 <- y_zor ~ 1 + x_zor + x_nat + x_water + x_wonen + x_infra#+ `IW_ove_t-1`
 
 ##########################################################
 # Do estimation
@@ -192,5 +211,5 @@ sp_model <- fgs3sls(formula, data=data, w=wmat,
 )
 print_fgs3sls(sp_model)
 mlist <- write_output(sp_model)
-texreg(mlist, file = "output/first_run.tex", single.row = FALSE, longtable = TRUE, use.packages = FALSE)
+texreg(mlist, file = "output/first_run.tex", single.row = FALSE, longtable = TRUE, use.packages = FALSE, digits = 5)
 screenreg(mlist)

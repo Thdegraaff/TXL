@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.8)  15 MAY 2018 17:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.8)  22 JUN 2018 13:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -189,27 +189,32 @@ Overfull \hbox (39.46709pt too wide) in alignment at lines 99--105
  []
 
 [2]) (./first_run.tex
-Overfull \hbox (2.01694pt too wide) in alignment at lines 3--7
+Overfull \hbox (58.34233pt too wide) in alignment at lines 3--7
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (2.01694pt too wide) in alignment at lines 7--11
+Overfull \hbox (58.34233pt too wide) in alignment at lines 7--11
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (2.01694pt too wide) in alignment at lines 11--13
+Overfull \hbox (58.34233pt too wide) in alignment at lines 11--13
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (2.01694pt too wide) in alignment at lines 13--18
+Overfull \hbox (58.34233pt too wide) in alignment at lines 13--18
  [] [] [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (2.01694pt too wide) in alignment at lines 18--35
+Overfull \hbox (58.34233pt too wide) in alignment at lines 18--39
+ [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (58.34233pt too wide) in alignment at lines 39--43
  [] [] [] [] [] [] [] [] 
  []
 
@@ -221,7 +226,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  2140 strings out of 492995
  40097 string characters out of 6132704
- 213651 words of memory out of 5000000
+ 213646 words of memory out of 5000000
  5742 multiletter control sequences out of 15000+600000
  6379 words of font info for 23 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -233,7 +238,7 @@ sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
 local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/loc
 al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on output.pdf (3 pages, 69628 bytes).
+Output written on output.pdf (3 pages, 70069 bytes).
 PDF statistics:
  42 PDF objects out of 1000 (max. 8388607)
  29 compressed objects within 1 object stream
